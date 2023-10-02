@@ -1,0 +1,100 @@
+a{
+    text-decoration: none;
+}
+
+#top-section{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.logo-top-lef{
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    width:  20px;
+    height: 20px;
+    cursor: pointer;
+}
+.center-text{
+    padding-left: 45%;
+    font-size: large;
+    cursor: pointer;
+}
+.logo-top-right{
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width:  20px;
+    height: 20px;
+    cursor: pointer;
+    
+}
+
+#user-section{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 2px 0px 0px 8px;    
+}
+.user-icon{
+    cursor: pointer;
+    width: 40px;
+    height:40px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+#post-section{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.post-user{
+    cursor: pointer;
+    width:  33px;
+    height: 33px;
+}
+.post-pic{
+    opacity: 70%;
+    width:  512px;
+    height: 512px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px;
+}
+.like-comment{
+    cursor: pointer;
+    background-color: white;
+    height: 20px;
+    width: 20px;
+    margin: 2px;
+}
+.heart-red{
+    position: absolute; 
+    cursor: pointer; 
+    left: 14px; 
+    height: 20px; 
+    width: 20px; 
+    margin: 2px;
+    z-index: -1;
+}
+.like-comment-dots{
+    float: right;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    margin: 2px;
+}
+
+#footer-section{
+    position: fixed;
+    width: 529px;
+    top: 95% ;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.footer-icon{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin: 2px 48px 0px 48px;
+}
