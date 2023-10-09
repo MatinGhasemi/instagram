@@ -98,3 +98,79 @@ a{
     height: 30px;
     margin: 2px 48px 0px 48px;
 }
+
+.comment-body{
+    flex-wrap: nowrap;
+    padding-left: 10px;
+
+}
+
+.upper-section{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 2px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.upper-section div{
+    font-size: x-large;
+}
+.three-dots{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.user-info-section{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.user-pic{
+    position: absolute;
+    width:  100px;
+    height: 90px;
+}
+.upf{
+    font-size: large;
+    left: 90px;
+    top: 20px;
+}
+.upi{
+    top: 20px;
+    left: 110px;
+}
+.edit-share{
+    color: black;
+    height: 35px;
+    width: 120px;
+    text-align: center;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+.edit-share :hover{
+    color: red;
+}
+.edit-share-section{
+    padding-top: 60px;
+}
+
+.story-section{
+    margin: 20px;
+    margin-left: 20px;
+}
+.story-plus{
+    width:  20px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.one-post{
+    height: 160px;
+    border: 2px solid black;
+}

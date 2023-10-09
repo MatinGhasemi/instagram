@@ -1,0 +1,67 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>User Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'instagram/css/style.css' %}">
+  </head>
+  
+  <body>
+
+    <section class="upper-section">
+        <div>{{ user.username }}</div>
+        <img class="three-dots" src="{% static 'instagram/images/dots.png' %}" alt="dots">
+    </section>
+
+    <section class="user-info-section">
+      <div class="container-fluid row">
+        <img class="col-3 justify-content-between border border-dark rounded-circle user-pic" src="{% static 'instagram/images/user.png' %}" alt="user">
+        <div class="col-4 justify-content-between upf"><b>Posts</b></div>
+        <div class="col-4 justify-content-between upf"><b>Followers</b></div>
+        <div class="col-4 justify-content-between upf"><b>Following</b></div>
+        <div class="col-4 justify-content-between upi">{{ user_post|length }}</div>
+        <div class="col-4 justify-content-between upi">128</div>
+        <div class="col-4 justify-content-between upi">240</div>
+      </div>
+    </section>
+
+    <section class="container-fluid edit-share-section">
+      <div class="row justify-content-around">
+        <a href="#" class="col-5 edit-share" style="text-decoration: none;"><div><div>Edit Profile</div></div></a>
+        <a href="#" class="col-5 edit-share" style="text-decoration: none;"><div><div>Share Profile</div></div></a>
+      </div>
+    </section>
+    
+    <section class="story-section">
+      <div class="row container-fluid">
+        <img class="col-2 story-plus" src="{% static 'instagram/images/plus.png' %}" alt="plus">
+        <!-- for section for story -->
+        <img class="col-2 story-plus" src="">
+      </div>
+    </section>
+
+    <section class="all-posts">
+      <div class="row container-fluid">
+        <!-- for section for post -->
+        <div class="col-4 one-post"></div>
+      </div>
+    </section>
+    
+    <section id="footer-section" style="margin-left: 20px;margin-top: 2px;">
+      <a href="/"><img class="footer-icon" src="{% static 'instagram/images/house.png' %}" alt="home"></a>
+      <a href="#"><img class="footer-icon" src="{% static 'instagram/images/magnifying-glass.png' %}" alt="serach"></a>
+      <a href="http://127.0.0.1:8000/admin/instagram/post/add/" target="_blank"><img class="footer-icon" src="{% static 'instagram/images/plus.png' %}" alt="plus"></a>
+      <a href="user-page"><img class="footer-icon" src="{% static 'instagram/images/user.png' %}" alt="user"></a>
+    </section>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{% static 'instagram/js/script.js' %}"></script>
+</body>
+</html>
