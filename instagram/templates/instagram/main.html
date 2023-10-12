@@ -36,7 +36,7 @@
         <div class="container-fluid">
             {{ post.post_body }}
         </div>
-        <div style="opacity: 50%;">{{ post.created_time }}</div>
+        <div style="opacity: 50%;">{{ post.created_time|date:"Y-m-d  H:i a" }}</div>
         <br>
         <br>
     </section>

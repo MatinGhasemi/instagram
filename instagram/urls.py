@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import index,comments,userPage
+from .views import Index,Comments,UserPage
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('<int:id>',comments ,name='comment'),
-    path('user-page',userPage , name='userpage')
+    path('', Index.as_view(), name='index'),
+    path('<int:id>',Comments.as_view() ,name='comment'),
+    path('user-page',UserPage.as_view() , name='userpage')
 ]
