@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Register Page{% endblock title %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="login-form">
+        {% for field in form %}
+        <div class="p-2"><span>{{ field.label }} : </span><span>{{ field }}</span></div>
+        {% endfor %}
+        <div class='p-2'>if You Have Accounts Click <span><a href="/accounts/login">Here</a></span>!</div>
+        <button class="btn btn-outline-success btn-md " type="submit">Submit</button>
+    </div>
+</form>
+{% endblock content %}

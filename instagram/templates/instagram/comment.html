@@ -12,14 +12,14 @@
 </head>
   <body>
     <section id="post-section">
-        <a href="/"><img class="post-user" src="{% static 'instagram/images/user.png' %}" alt="user"></a><span style="cursor: pointer; font-size: 25px ; position: absolute; padding-left: 10px;">{{ post.user }}</span>
-        <img class="post-pic" src="{% static 'instagram/images/unknown-mail.png' %}" alt="user">
+        <a href="/"><img class="post-user" src="{{ post.user.userprofile.picture.url }}" alt="user"></a><span style="cursor: pointer; font-size: 25px ; position: absolute; padding-left: 10px;">{{ post.user }}</span>
+        <a href="{{ post.id }}"><img class="post-pic" src="{{ post.picture.url }}" alt="user"></a>
         <img id="heart" class="like-comment" src="{% static 'instagram/images/heart.png' %}" alt="heart">
         <img id="heart-red" class="heart-red" src="{% static 'instagram/images/heart-red.png' %}" alt="heart">
-        <img class="like-comment" id="comment" src="{% static 'instagram/images/chat.png' %}" alt="chat">
+        <a onclick="myFunction()"><img class="like-comment" id="comment" src="{% static 'instagram/images/chat.png' %}" alt="chat"></a>
         <img class="like-comment" src="{% static 'instagram/images/paper-plane.png' %}" alt="share">
         <img class="like-comment-dots" src="{% static 'instagram/images/dots.png' %}" alt="dots">
-          <section id="add-comment" >
+          <section id="myDIV" >
             <form action="{% url 'comment' post.id %}" method="POST">
               {% csrf_token %}
               <div>
@@ -53,5 +53,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> {% endcomment %}
     <script src="{% static 'instagram/js/script.js' %}"></script>
+    <script>
+      function myFunction() {
+          var x = document.getElementById("myDIV");
+          if (x.style.display === "none") {
+              x.style.display = "block";
+          } else {
+              x.style.display = "none";
+          }
+      }</script>
   </body>
 </html>

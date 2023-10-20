@@ -17,10 +17,11 @@
         <div>{{ user.username }}</div>
         <img class="three-dots" src="{% static 'instagram/images/dots.png' %}" alt="dots">
     </section>
-
+    
     <section class="user-info-section">
       <div class="container-fluid row">
-        <img class="col-3 justify-content-between border border-dark rounded-circle user-pic" src="{% static 'instagram/images/user.png' %}" alt="user">
+        
+        <img class="col-3 justify-content-between rounded-circle user-pic" src="{{ profile }}" alt="user">
         <div class="col-4 justify-content-between upf"><b>Posts</b></div>
         <div class="col-4 justify-content-between upf"><b>Followers</b></div>
         <div class="col-4 justify-content-between upf"><b>Following</b></div>
@@ -32,8 +33,8 @@
 
     <section class="container-fluid edit-share-section">
       <div class="row justify-content-around">
-        <a href="#" class="col-5 edit-share" style="text-decoration: none;"><div><div>Edit Profile</div></div></a>
-        <a href="#" class="col-5 edit-share" style="text-decoration: none;"><div><div>Share Profile</div></div></a>
+        <a href="edit-profile/" class="col-5 edit-share" style="text-decoration: none;"><div><div>Edit Profile</div></div></a>
+        <a href="{% url 'edit-specifications' %}" class="col-5 edit-share" style="text-decoration: none;"><div><div>Edit Specification</div></div></a>
       </div>
     </section>
     
@@ -46,16 +47,19 @@
     </section>
 
     <section class="all-posts">
-      <div class="row container-fluid">
-        <!-- for section for post -->
-        <div class="col-4 one-post"></div>
+      <div class="row">
+        {% for i in user_post %}
+        <div class="one-post">
+          <a href="{% url 'comment' i.id %}"><img class="one-post-pic" src="{{ i.picture.url }}"></a>
+        </div>
+        {% endfor %}
       </div>
     </section>
     
     <section id="footer-section" style="margin-left: 20px;margin-top: 2px;">
       <a href="/"><img class="footer-icon" src="{% static 'instagram/images/house.png' %}" alt="home"></a>
       <a href="#"><img class="footer-icon" src="{% static 'instagram/images/magnifying-glass.png' %}" alt="serach"></a>
-      <a href="http://127.0.0.1:8000/admin/instagram/post/add/" target="_blank"><img class="footer-icon" src="{% static 'instagram/images/plus.png' %}" alt="plus"></a>
+      <a href="{% url 'post-create' %}" target="_blank"><img class="footer-icon" src="{% static 'instagram/images/plus.png' %}" alt="plus"></a>
       <a href="user-page"><img class="footer-icon" src="{% static 'instagram/images/user.png' %}" alt="user"></a>
     </section>
     

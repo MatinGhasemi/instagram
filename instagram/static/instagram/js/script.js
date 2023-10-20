@@ -16,3 +16,4 @@ heart_red.onclick = function(){
     heart_red.style.zIndex = -1
     heart.style.zIndex = 1
 }
+

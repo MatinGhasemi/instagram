@@ -172,5 +172,20 @@ a{
 
 .one-post{
     height: 160px;
+    width: 178px;
     border: 2px solid black;
+}
+.one-post-pic{
+    height: 158px;
+    width: 178px;
+
+}
+
+.login-form{
+    align-items: center;
+    text-align: center;
+}
+
+#myDIV{
+    display: none;
 }

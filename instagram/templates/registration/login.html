@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Login Page{% endblock title %}
+{% block content %}
+<form method="POST" class="container-fluid pt-5">
+    {% csrf_token %}
+    <div class="login-form">
+        <div class=''>{{form.as_p}}</div>
+        <div class='p-2'>if You Dont Have Accounts Click <span><a href="/accounts/register">Here</a></span>!</div>
+        <button class="btn btn-outline-danger btn-md " type="submit">Login</button>
+    </div>
+</form>
+{% endblock content %}
