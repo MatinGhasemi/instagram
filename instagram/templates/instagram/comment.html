@@ -7,18 +7,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> {% endcomment %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'instagram/css/style.css' %}">
 </head>
-  <body>
+  <body style="padding:9px;">
     <section id="post-section">
-        <a href="/"><img class="post-user" src="{{ post.user.userprofile.picture.url }}" alt="user"></a><span style="cursor: pointer; font-size: 25px ; position: absolute; padding-left: 10px;">{{ post.user }}</span>
+        {% if post.user.userprofile.picture %}
+            <a href="{{ post.id }}"><img class="post-user" src="{{ post.user.userprofile.picture.url }}" alt="user"></a><span style="cursor: pointer; font-size: 25px ; position: absolute; padding-left: 10px;">{{ post.user }}</span>
+        {% else %}
+            <a href="{{ post.id }}"><img class="post-user" src="{% static 'instagram/images/user.png' %}" alt="user"></a><span style="cursor: pointer; font-size: 25px ; position: absolute; padding-left: 10px;">{{ post.user }}</span>
+        {% endif %}
         <a href="{{ post.id }}"><img class="post-pic" src="{{ post.picture.url }}" alt="user"></a>
         <img id="heart" class="like-comment" src="{% static 'instagram/images/heart.png' %}" alt="heart">
-        <img id="heart-red" class="heart-red" src="{% static 'instagram/images/heart-red.png' %}" alt="heart">
+        <img id="heart-red" class="heart-red" style="left:15px;top:562px;" src="{% static 'instagram/images/heart-red.png' %}" alt="heart">
         <a onclick="myFunction()"><img class="like-comment" id="comment" src="{% static 'instagram/images/chat.png' %}" alt="chat"></a>
         <img class="like-comment" src="{% static 'instagram/images/paper-plane.png' %}" alt="share">
-        <img class="like-comment-dots" src="{% static 'instagram/images/dots.png' %}" alt="dots">
+        <div class="dropdown"></div>
+          <a href="#" role="button" data-toggle="dropdown"><img class="like-comment-dots" src="{% static 'instagram/images/dots.png' %}" alt="dots"></a>
+          <div class="dropdown-menu dropdown-menu-left">
+            {% if user == post.user %}
+            <form method="POST">
+              {% csrf_token %}
+              <button type="submit" class="dropdown-item" style='cursor: pointer; border: none; color: red; font-size: 14px;' name="post-id" value="{{ post.id }}">Delete</button>
+            </form>
+            <a href="{% url 'post-update' post.id %}" class="dropdown-item"><button style='background-color:white ;cursor: pointer; border: none; color: cyan; font-size: 14px;'>Update</button></a>
+            {% endif %}
+          </div>
+        </div>
           <section id="myDIV" >
             <form action="{% url 'comment' post.id %}" method="POST">
               {% csrf_token %}
@@ -45,13 +60,13 @@
     <section id="footer-section">
       <a href="/"><img class="footer-icon" src="{% static 'instagram/images/house.png' %}" alt="home"></a>
       <a href="#"><img class="footer-icon" src="{% static 'instagram/images/magnifying-glass.png' %}" alt="serach"></a>
-      <a href="http://127.0.0.1:8000/admin/instagram/post/add/" target="_blank"><img class="footer-icon" src="{% static 'instagram/images/plus.png' %}" alt="plus"></a>
+      <a href="{% url 'post-create' %}" target="_blank"><img class="footer-icon" src="{% static 'instagram/images/plus.png' %}" alt="plus"></a>
       <a href="user-page"><img class="footer-icon" src="{% static 'instagram/images/user.png' %}" alt="user"></a>
     </section>
 
-    {% comment %} <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> {% endcomment %}
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{% static 'instagram/js/script.js' %}"></script>
     <script>
       function myFunction() {

@@ -12,16 +12,27 @@
   </head>
   
   <body>
-
     <section class="upper-section">
-        <div>{{ user.username }}</div>
-        <img class="three-dots" src="{% static 'instagram/images/dots.png' %}" alt="dots">
+      <div class="row">
+        <div class="mx-3"><b>{{ user.username }}</b></div>
+        {% comment %} <img class="three-dots" src="{% static 'instagram/images/dots.png' %}" alt="dots"> {% endcomment %}
+        {% comment %} <a href="/accounts/logout" style="padding-left: 320px;">Logout</a> {% endcomment %}
+        <form method="POST">  
+          {% csrf_token %}
+          <button type="submit" style="padding-left: 310px;border:none; background-color:white;">Logout</button>
+        </form>
+      </div>
     </section>
     
     <section class="user-info-section">
+      <div><strong><i>{{ user.first_name }} {{ user.last_name }}</i></strong></div>
       <div class="container-fluid row">
         
-        <img class="col-3 justify-content-between rounded-circle user-pic" src="{{ profile }}" alt="user">
+        {% if picture %}
+          <img class="col-3 justify-content-between rounded-circle user-pic" src="{{ picture.url }}" alt="user">
+        {% else %}
+          <img class="col-3 justify-content-between rounded-circle user-pic" src="{% static 'instagram/images/user.png' %}" alt="user">
+        {% endif %}
         <div class="col-4 justify-content-between upf"><b>Posts</b></div>
         <div class="col-4 justify-content-between upf"><b>Followers</b></div>
         <div class="col-4 justify-content-between upf"><b>Following</b></div>

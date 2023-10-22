@@ -1,11 +1,7 @@
-from time import timezone
-from typing import Any
-from django.db.models.query import QuerySet
 from django.shortcuts import redirect, render
-from django.http import HttpResponse, HttpResponseBadRequest
 from django.views import View
 from django.views.generic import ListView,DetailView,CreateView,UpdateView
-from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth import login,logout
 
 from .models import Post,Comment,User,UserProfile
 from .forms import RegisterForm,UserProfileForm,PostCreateAndUpdate,UserUpdate
@@ -19,11 +15,17 @@ class Index(View):
     def get(self,request):
         try:    
             posts = Post.objects.all().order_by('-created_time')
-        
-            return render(request,'instagram/main.html',context={'posts':posts})
+            return render(request,'instagram/main.html',{'posts':posts})
         except:
             return render(request,"instagram/error.html",{})
 
+    def post(self,request):
+        post_id = request.POST.get('post-id')
+        post = Post.objects.filter(id=post_id).first()
+        if request.user == post.user:
+            post.delete()
+
+        return redirect('/')
 
 
 # def comments(request,id):
@@ -41,12 +43,26 @@ class Comments(View):
             return render(request,"instagram/error.html",{})
     
     def post(self,request,id):
-        post = Post.objects.get(id=id)
-        comment_body = request.POST['comment_body']
-        comment = Comment.objects.create(body=comment_body,user=request.user,post=post)
-        comment.save()
+        # comment section
 
-        return redirect(f'/{id}')
+        try:
+            comment_body = request.POST.get('comment_body')
+            post = Post.objects.filter(id=id).first()
+            comment = Comment.objects.create(body=comment_body,user=request.user,post=post)
+            comment.save()
+
+            return redirect(f'/{id}')
+
+        # Delete post Section
+        
+        except:
+            post_id = request.POST.get('post-id')
+            post_delete = Post.objects.filter(id=post_id).first()
+            print(post_delete)
+            if request.user == post_delete.user:
+                post_delete.delete()
+                
+                return redirect('/')
 
 
 # def userPage(request):
@@ -56,11 +72,13 @@ class Comments(View):
 
 class UserPage(View):
     def get(self,request):
-        profile = UserProfile.objects.get(user=request.user).picture.url
         user = request.user
         user_post = user.post_set.all()
-        # user_pic = UserProfile.objects.get(user=user)
-        return render(request,'instagram/user-page.html',{'user':user ,'user_post':user_post,'profile': profile}) #'user_pic':user_pic})
+        return render(request,'instagram/user-page.html',{'user':user ,'user_post':user_post ,'picture':user.userprofile.picture})
+
+    def post(self,request):
+        logout(request)
+        return redirect('/user-page')
 
 
 class EditProfile(View):
