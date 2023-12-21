@@ -15,9 +15,9 @@ class Index(View):
     def get(self,request):
         try:    
             posts = Post.objects.all().order_by('-created_time')
-            return render(request,'instagram/main.html',{'posts':posts})
         except:
             return render(request,"instagram/error.html",{})
+        return render(request,'instagram/main.html',{'posts':posts})
 
     def post(self,request):
         post_id = request.POST.get('post-id')
@@ -58,7 +58,6 @@ class Comments(View):
         except:
             post_id = request.POST.get('post-id')
             post_delete = Post.objects.filter(id=post_id).first()
-            print(post_delete)
             if request.user == post_delete.user:
                 post_delete.delete()
                 

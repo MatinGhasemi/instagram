@@ -9,20 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'instagram/css/style.css' %}">
 </head>
-<body style="padding: 7px;">
-    <section id="top-section">
-        <img class="logo-top-lef" src="{% static 'instagram/images/settings.png' %}" alt="setting">
-        <a href="/"  class="center-text"><span>instagram</span></a>
-        <img class="logo-top-right" src="{% static 'instagram/images/paper-plane.png' %}" alt="share">
-    </section>
-    <section id="user-section">
-        <img class="user-icon" src="{% static 'instagram/images/user.png' %}" alt="user">
-        <img class="user-icon" src="{% static 'instagram/images/user.png' %}" alt="user">
-        <img class="user-icon" src="{% static 'instagram/images/user.png' %}" alt="user">
-        <img class="user-icon" src="{% static 'instagram/images/user.png' %}" alt="user">
-        <img class="user-icon" src="{% static 'instagram/images/user.png' %}" alt="user">
-
-    </section>
+<body>
     {% for post in posts %}
     <section id="post-section">
         {% if post.user.userprofile.picture %}
@@ -55,13 +42,6 @@
         <br>
     </section>
     {% endfor %}
-
-    <section id="footer-section">
-        <a href="/"><img class="footer-icon" src="{% static 'instagram/images/house.png' %}" alt="home"></a>
-        <a href="#"><img class="footer-icon" src="{% static 'instagram/images/magnifying-glass.png' %}" alt="serach"></a>
-        <a href="{% url 'post-create' %}" target="_blank"><img class="footer-icon" src="{% static 'instagram/images/plus.png' %}" alt="plus"></a>
-        <a href="{% url 'userpage' %}"><img class="footer-icon" src="{% static 'instagram/images/user.png' %}" alt="user"></a>
-    </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
