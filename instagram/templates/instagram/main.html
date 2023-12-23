@@ -30,7 +30,7 @@
             <img id="heart" class="like-comment" src="{% static 'instagram/images/heart.png' %}" alt="heart">
             <a href="{{ post.id }}"><img class="like-comment" src="{% static 'instagram/images/chat.png' %}" alt="chat"></a>
             <img class="like-comment" src="{% static 'instagram/images/paper-plane.png' %}" alt="share">
-            <div class="dropdown "></div>
+            <div class="dropdown ">
               <a role="button" data-toggle="dropdown"><img class="like-comment-dots" src="{% static 'instagram/images/dots.png' %}" alt="dots"></a>
               <div class="dropdown-menu dropdown-menu-right">
                 {% if user == post.user %}
@@ -40,7 +40,8 @@
                 </form>
                 <a href="{% url 'post-update' post.id %}" class="dropdown-item"><button style='background-color:white ;cursor: pointer; border: none; color: cyan; font-size: 14px;'>Update</button></a>
                 {% endif %}
-              </div>    
+              </div>
+            </div>    
         </div>
         </div>        
         <div class="box3">

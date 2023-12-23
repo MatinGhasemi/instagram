@@ -116,6 +116,14 @@ body{
     .name-bio{
         margin-left: 26%;
     }
+
+    .comments{
+        padding-left: 26%;
+    }
+
+    #myDIV{
+        margin-left: 26%;
+    }
 }
 
 .post-pic{
@@ -154,6 +162,7 @@ body{
 }
 
 .user-pic{
+    border-radius: 50%;
     width: 70px;
     height: 70px;
 }
@@ -190,3 +199,6 @@ body{
     height: 100%;
 }
 
+.comments{
+    margin-left: 15px;
+}

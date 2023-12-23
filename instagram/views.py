@@ -73,7 +73,7 @@ class UserPage(View):
     def get(self,request):
         user = request.user
         user_post = user.post_set.all()
-        return render(request,'instagram/user-page.html',{'user':user ,'user_post':user_post ,'picture':user.userprofile.picture})
+        return render(request,'instagram/user-page.html',{'user':user ,'user_post':user_post ,'picture':user.userprofile})
 
     def post(self,request):
         logout(request)

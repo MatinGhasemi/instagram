@@ -5,7 +5,7 @@ Edit Page
 {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <div class="login-form">
+    <div class="login-form text-center mt-5">
         {% for i in form %}
             <div class="py-3">{{ i.label}} : {{ i }}</div>
         {% endfor %}

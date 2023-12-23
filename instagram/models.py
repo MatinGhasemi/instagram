@@ -7,6 +7,7 @@ from django.db.models.signals import post_save
 class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     picture = models.ImageField(upload_to='images/user',null=True,blank=True)
+    bio = models.TextField(max_length=6500,blank=True,null=True)
 
 @receiver(post_save, sender=User)
 def handler(sender,instance,created, **kwargs):
@@ -18,7 +19,7 @@ def handler(sender,instance,created, **kwargs):
 class Post(models.Model):
     picture  = models.ImageField(upload_to='images/posts')
     post_body = models.TextField(verbose_name='Post Body')
-    likes = models.PositiveBigIntegerField(default=0)
+    likes = models.ManyToManyField(User ,related_name='likes')
     created_time = models.DateTimeField(auto_now_add=True,verbose_name='Created Time')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

@@ -13,7 +13,7 @@
   </head>
   <body>
     {% if user == post.user %}
-    <form  class="container-fluid pt-5" method="POST" enctype="multipart/form-data">
+    <form  class="container-fluid text-center mt-5" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="login-form">
             <div class=''>{{ form.as_p }}</div>

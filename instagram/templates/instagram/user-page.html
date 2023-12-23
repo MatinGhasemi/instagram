@@ -35,8 +35,8 @@
     
     <section class="user-info-section">
       <div class="mx-4 ">        
-        {% if picture %}
-          <img class="user-pic" src="{{ picture.url }}" alt="user">
+        {% if picture.picture %}
+          <img class="user-pic" src="{{ picture.picture.url }}" alt="user">
         {% else %}
           <img class="user-pic" src="{% static 'instagram/images/user.png' %}" alt="user">
         {% endif %}
@@ -50,14 +50,18 @@
         </div>
       </div>
       <div class='name-bio'>
-        <div class='my-2 mb-4 mx-4'><strong><i>{{ user.first_name }} {{ user.last_name }}</i></strong></div>
-        {% comment %} <div class='mx-4'><strong> we dont have bio yet </strong></div> {% endcomment %}
+        <div class='mx-4'><strong><i>{{ user.first_name }} {{ user.last_name }}</i></strong></div>
+        {% if picture.bio %}
+        <div class='mx-4 mb-4'><strong>{{picture.bio}}</strong></div>
+        {% else %}
+        <div class='mx-4 mb-4'></div>
+        {% endif %}
       </div>
     </section>
 
     <section class="mb-5 edit-share-section">
       <div class="wrapper-grid-2">
-        <div><a href="edit-profile/" class="edit-share" style='text-decoration: none;'>Edit Profile</a></div>
+        <div><a href="{% url 'edit-profile' %}" class="edit-share" style='text-decoration: none;'>Edit Profile</a></div>
         <div><a href="{% url 'edit-specifications' %}" class="edit-share" style='text-decoration: none;'>Edit Specification</a></div>
       </div>
     </section>
