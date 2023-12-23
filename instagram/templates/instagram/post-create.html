@@ -3,9 +3,8 @@
 {% block content %}
 <form  class="container-fluid pt-5" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="login-form">
-        <div class=''>{{ post.as_p }}</div>
-        
+    <div class="login-form text-center">
+        <div class='post-create-inputs'>{{ post.as_p }}</div>
         <button class="btn btn-outline-primary btn-md " type="submit">New Post</button>
     </div>
 </form>

@@ -3,7 +3,7 @@
 {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <div class="login-form">
+    <div class="login-form text-center">
         {% for field in form %}
         <div class="p-2"><span>{{ field.label }} : </span><span>{{ field }}</span></div>
         {% endfor %}

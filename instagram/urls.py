@@ -6,7 +6,7 @@ from .views import Index,Comments,UserPage,RegisterUser,EditProfile,PostCreate,U
 urlpatterns = [
     path('', login_required(Index.as_view()), name='index'),
     path('<int:id>',login_required(Comments.as_view()) ,name='comment'),
-    path('user-page',login_required(UserPage.as_view()) , name='userpage'),
+    path('user-page/',login_required(UserPage.as_view()) , name='userpage'),
     path('edit-profile/',login_required(EditProfile.as_view()),name='edit-profile'),
     path('edit-Specifications/',login_required(EditSpecification.as_view()),name='edit-specifications'),
     path('post-create/',login_required(PostCreate.as_view()),name='post-create'),

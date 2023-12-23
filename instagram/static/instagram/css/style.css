@@ -1,134 +1,192 @@
 a{
     text-decoration: none;
 }
+body{
+    margin: 0;
+    padding: 0;
+}
 #post-section{
-    padding: 5px;
-    border: 1px solid black;
+    margin-bottom: 55px;
+}
+.navbar{
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.navbar a{
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.navbar a:hover{
+    background-color: #f1f1f1;
+    color: black;
+}
+
+@media only screen and (min-width:900px) {
+    .navbar {
+        height: 100%;
+        width: 25%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+    .navbar-items{
+        margin-left: 50px;
+    }
+    .navbar-items a {
+      float: none;
+      margin: 20px 0;
+      text-align: center;
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+    }
+    
+    .navbar a:hover {
+      color: black;
+    }
+    .post-pic{
+        border-radius: 10px;
+        width: 350px;
+        height: 350px;
+        margin-left: 26%;
+    }
+    .box2{
+        width: 100%;
+    }
+    .post-user{
+        margin-left: 26%;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+    }
+
+    .like-comment{
+        width:  30px;
+        height: 30px;
+    }
+
+    .like-comment-share{
+        margin-left: 26%;
+    }
+
+    .like-comment-dots{
+        margin-left: 90%;
+        width:  30px;
+        height: 30px;
+    }  
+    
+    .box3{
+        margin-left: 26%;
+    }
+    
+    .upper-section{
+        padding-left: 26%;
+    }
+
+    .user-pic{
+        margin-left: 26%;
+    }
+
+    .grid-wrapper{
+        margin-left: 26%;
+    }
+
+    .wrapper-grid-2{
+        margin-left: 26%;
+    }
+
+    .wrapper-grid-3{
+        margin-left: 26%;
+    }
+
+    .name-bio{
+        margin-left: 26%;
+    }
+}
+
+.post-pic{
     border-radius: 10px;
+    max-width: 100%;
+}
+.box2{
+    width: 100%;
 }
 .post-user{
-    cursor: pointer;
-    width:  33px;
-    height: 33px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
 }
-.post-pic{
-    opacity: 70%;
-    width:  512px;
-    height: 512px;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 2px;
-}
+
 .like-comment{
-    cursor: pointer;
-    background-color: white;
-    height: 20px;
-    width: 20px;
-    margin: 2px;
+    width:  30px;
+    height: 30px;
 }
-.heart-red{
-    position: absolute; 
-    cursor: pointer; 
-    left: 14px; 
-    height: 20px; 
-    width: 20px; 
-    margin: 2px;
-    z-index: -1;
-}
+
 .like-comment-dots{
-    float: right;
-    cursor: pointer;
-    height: 20px;
-    width: 20px;
-    margin: 2px;
-}
-.comment-body{
-    flex-wrap: nowrap;
-    padding-left: 10px;
-
+    margin-left: 90%;
+    width:  30px;
+    height: 30px;
 }
 
-.upper-section{
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 2px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-.upper-section div{
-    font-size: x-large;
-}
-.three-dots{
-    width: 20px;
-    height: 20px;
+.logout-form{
     position: absolute;
-    right: 8px;
-    top: 10px;
-    cursor: pointer;
+    right: 5px;
+    
 }
 
-.user-info-section{
-    padding-top: 20px;
-    padding-left: 10px;
+.logout-form button{
+    border:none; 
+    background-color:white;
 }
+
 .user-pic{
-    position: absolute;
-    width:  100px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
 }
-.upf{
-    font-size: large;
-    left: 90px;
-    top: 20px;
+
+.grid-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
-.upi{
-    top: 20px;
-    left: 110px;
+
+.wrapper-grid-2{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
+
 .edit-share{
     color: black;
-    height: 35px;
-    width: 120px;
-    text-align: center;
-    font-size: 20px;
-    border: 2px solid black;
+    border:1px solid black;
     border-radius: 10px;
-    cursor: pointer;
-
+    padding: 8px;
 }
-.edit-share :hover{
-    color: red;
-}
-.edit-share-section{
-    padding-top: 60px;
+.edit-share:hover{
+    color: white;
+    background-color: #333;
 }
 
-.story-section{
-    margin: 20px;
-    margin-left: 20px;
-}
-.story-plus{
-    width:  20px;
-    height: 50px;
-    cursor: pointer;
+.wrapper-grid-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-.one-post{
-    height: 160px;
-    width: 178px;
-    border: 2px solid black;
-}
 .one-post-pic{
-    height: 158px;
-    width: 178px;
-
+    width: 100%;
+    height: 100%;
 }
 
-.login-form{
-    align-items: center;
-    text-align: center;
-}
-
-#myDIV{
-    display: none;
-}

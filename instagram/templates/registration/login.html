@@ -3,7 +3,7 @@
 {% block content %}
 <form method="POST" class="container-fluid pt-5">
     {% csrf_token %}
-    <div class="login-form">
+    <div class="login-form text-center">
         <div class=''>{{form.as_p}}</div>
         <div class='p-2'>if You Dont Have Accounts Click <span><a href="/accounts/register">Here</a></span>!</div>
         <button class="btn btn-outline-danger btn-md " type="submit">Login</button>

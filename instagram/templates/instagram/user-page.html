@@ -5,73 +5,71 @@
   <head>
     <title>User Page</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'instagram/css/style.css' %}">
   </head>
   
   <body>
-    <section class="upper-section">
+    <div class="navbar">
+      <div class='navbar-items'>
+          <a href="/">Home</a>
+          <a href="{% url 'post-create' %}">New Post</a>
+          <a href="{% url 'userpage' %}">Account</a>
+          <a href="#">Search</a>
+      </div>
+    </div>
+    
+    <section class="m-2 upper-section">
       <div class="row">
-        <div class="mx-3"><b>{{ user.username }}</b></div>
+        <div class="mx-3 upper-section-username"><b>{{ user.username }}</b></div>
         {% comment %} <img class="three-dots" src="{% static 'instagram/images/dots.png' %}" alt="dots"> {% endcomment %}
         {% comment %} <a href="/accounts/logout" style="padding-left: 320px;">Logout</a> {% endcomment %}
-        <form method="POST">  
+        <form class='logout-form' method="POST">  
           {% csrf_token %}
-          <button type="submit" style="padding-left: 300px;border:none; background-color:white;">Logout</button>
+          <button type="submit">Logout</button>
         </form>
       </div>
     </section>
     
     <section class="user-info-section">
-      <div><strong><i>{{ user.first_name }} {{ user.last_name }}</i></strong></div>
-      <div class="container-fluid row">
-        
+      <div class="mx-4 ">        
         {% if picture %}
-          <img class="col-3 justify-content-between rounded-circle user-pic" src="{{ picture.url }}" alt="user">
+          <img class="user-pic" src="{{ picture.url }}" alt="user">
         {% else %}
-          <img class="col-3 justify-content-between rounded-circle user-pic" src="{% static 'instagram/images/user.png' %}" alt="user">
+          <img class="user-pic" src="{% static 'instagram/images/user.png' %}" alt="user">
         {% endif %}
-        <div class="col-4 justify-content-between upf"><b>Posts</b></div>
-        <div class="col-4 justify-content-between upf"><b>Followers</b></div>
-        <div class="col-4 justify-content-between upf"><b>Following</b></div>
-        <div class="col-4 justify-content-between upi">{{ user_post|length }}</div>
-        <div class="col-4 justify-content-between upi">128</div>
-        <div class="col-4 justify-content-between upi">240</div>
+        <div class='text-center grid-wrapper'>
+          <div class=""><b>Posts</b></div>
+          <div class=""><b>Followers</b></div>
+          <div class=""><b>Following</b></div>
+          <div class=""><b>{{ user_post|length }}</b></div>
+          <div class=""><b>128</b></div>
+          <div class=""><b>30</b></div>
+        </div>
+      </div>
+      <div class='name-bio'>
+        <div class='my-2 mb-4 mx-4'><strong><i>{{ user.first_name }} {{ user.last_name }}</i></strong></div>
+        {% comment %} <div class='mx-4'><strong> we dont have bio yet </strong></div> {% endcomment %}
       </div>
     </section>
 
-    <section class="container-fluid edit-share-section">
-      <div class="row justify-content-around">
-        <a href="edit-profile/" class="col-5 edit-share" style="text-decoration: none;"><div><div>Edit Profile</div></div></a>
-        <a href="{% url 'edit-specifications' %}" class="col-5 edit-share" style="text-decoration: none;"><div><div>Edit Specification</div></div></a>
-      </div>
-    </section>
-    
-    <section class="story-section">
-      <div class="row container-fluid">
-        <img class="col-2 story-plus" src="{% static 'instagram/images/plus.png' %}" alt="plus">
-        <!-- for section for story -->
-        <img class="col-2 story-plus" src="">
+    <section class="mb-5 edit-share-section">
+      <div class="wrapper-grid-2">
+        <div><a href="edit-profile/" class="edit-share" style='text-decoration: none;'>Edit Profile</a></div>
+        <div><a href="{% url 'edit-specifications' %}" class="edit-share" style='text-decoration: none;'>Edit Specification</a></div>
       </div>
     </section>
 
     <section class="all-posts">
-      <div class="row">
+      <div class="wrapper-grid-3">
         {% for i in user_post %}
         <div class="one-post">
           <a href="{% url 'comment' i.id %}"><img class="one-post-pic" src="{{ i.picture.url }}"></a>
         </div>
         {% endfor %}
       </div>
-    </section>
-    
-    <section id="footer-section" style="margin-left: 20px;margin-top: 2px;">
-      <a href="/"><img class="footer-icon" src="{% static 'instagram/images/house.png' %}" alt="home"></a>
-      <a href="#"><img class="footer-icon" src="{% static 'instagram/images/magnifying-glass.png' %}" alt="serach"></a>
-      <a href="{% url 'post-create' %}" target="_blank"><img class="footer-icon" src="{% static 'instagram/images/plus.png' %}" alt="plus"></a>
-      <a href="user-page"><img class="footer-icon" src="{% static 'instagram/images/user.png' %}" alt="user"></a>
     </section>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
